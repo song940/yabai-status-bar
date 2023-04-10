@@ -1,12 +1,10 @@
 import * as Uebersicht from "uebersicht";
-import * as DataWidget from "./data-widget.jsx";
-import * as DataWidgetLoader from "./data-widget-loader.jsx";
-import * as Icons from "../icons.jsx";
-import useWidgetRefresh from "../../hooks/use-widget-refresh";
-import * as Utils from "../../utils";
-import * as Settings from "../../settings";
-
-export { wifiStyles as styles } from "../../styles/components/data/wifi";
+import * as DataWidget from "../components/data/data-widget.jsx";
+import * as DataWidgetLoader from "../components/data/data-widget-loader.jsx";
+import * as Icons from "../components/icons.jsx";
+import useWidgetRefresh from "../hooks/use-widget-refresh.js";
+import * as Utils from "../utils.js";
+import * as Settings from "../settings.js";
 
 const settings = Settings.get();
 const { widgets, networkWidgetOptions } = settings;
@@ -26,6 +24,7 @@ const REFRESH_FREQUENCY = Settings.getRefreshFrequency(
 );
 
 const toggleWifi = (isActive, networkDevice) => {
+  console.log(networkDevice);
   if (isActive) {
     Uebersicht.run(`networksetup -setairportpower ${networkDevice} off`);
     Utils.notification("Disabling network...");
@@ -100,3 +99,16 @@ export const Widget = () => {
     </DataWidget.Widget>
   );
 };
+
+export const styles = /* css */ `
+.wifi {
+  background-color: var(--red);
+}
+.simple-bar--widgets-background-color-as-foreground .wifi {
+  color: var(--red);
+  background-color: transparent;
+}
+.wifi--hidden-name > svg {
+  margin-right: 0;
+}
+`;

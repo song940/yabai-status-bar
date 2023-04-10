@@ -9,10 +9,9 @@ import * as Time from "./lib/components/data/time.jsx";
 import * as DateDisplay from "./lib/components/data/date-display.jsx";
 import * as Weather from "./lib/components/data/weather.jsx";
 import * as Battery from "./lib/components/data/battery.jsx";
-import * as Sound from "./lib/components/data/sound.jsx";
-import * as Mic from "./lib/components/data/mic.jsx";
-import * as Wifi from "./lib/components/data/wifi.jsx";
-import * as ViscosityVPN from "./lib/components/data/viscosity-vpn.jsx";
+import * as Mic from "./lib/widgets/mic.jsx";
+import * as Wifi from "./lib/widgets/wifi.jsx";
+import * as Sound from "./lib/widgets/sound.jsx";
 import * as Keyboard from "./lib/components/data/keyboard.jsx";
 import * as Spotify from "./lib/components/data/spotify.jsx";
 import * as Crypto from "./lib/components/data/crypto.jsx";
@@ -20,6 +19,7 @@ import * as Stock from "./lib/components/data/stock.jsx";
 import * as Music from "./lib/components/data/music.jsx";
 import * as Mpd from "./lib/components/data/mpd.jsx";
 import * as BrowserTrack from "./lib/components/data/browser-track.jsx";
+import * as ViscosityVPN from "./lib/components/data/viscosity-vpn.jsx";
 import * as Dnd from "./lib/components/data/dnd.jsx";
 import * as Specter from "./lib/components/data/specter.jsx";
 import * as DataWidgetLoader from "./lib/components/data/data-widget-loader.jsx";
@@ -122,7 +122,6 @@ const render = ({ output, error }) => {
         <Settings.Wrapper />
         <UserWidgets />
         <Zoom.Widget />
-        <BrowserTrack.Widget />
         <Spotify.Widget />
         <Crypto.Widget />
         <Stock.Widget />
@@ -132,10 +131,11 @@ const render = ({ output, error }) => {
         <Battery.Widget />
         <Mic.Widget />
         <Sound.Widget />
-        <ViscosityVPN.Widget />
         <Wifi.Widget />
         <Keyboard.Widget />
         <DateDisplay.Widget />
+        <BrowserTrack.Widget />
+        <ViscosityVPN.Widget />
         <Time.Widget />
         <Dnd.Widget />
       </div>

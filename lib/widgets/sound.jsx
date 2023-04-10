@@ -1,12 +1,10 @@
 import * as Uebersicht from "uebersicht";
-import * as DataWidget from "./data-widget.jsx";
-import * as DataWidgetLoader from "./data-widget-loader.jsx";
-import * as Icons from "../icons.jsx";
-import useWidgetRefresh from "../../hooks/use-widget-refresh";
-import * as Settings from "../../settings";
-import * as Utils from "../../utils";
-
-export { soundStyles as styles } from "../../styles/components/data/sound";
+import * as DataWidget from "../components/data/data-widget.jsx";
+import * as DataWidgetLoader from "../components/data/data-widget-loader.jsx";
+import * as Icons from "../components/icons.jsx";
+import useWidgetRefresh from "../hooks/use-widget-refresh";
+import * as Settings from "../settings";
+import * as Utils from "../utils";
 
 const settings = Settings.get();
 const { widgets, soundWidgetOptions } = settings;
@@ -89,10 +87,7 @@ export const Widget = () => {
 
   return (
     <DataWidget.Widget classes={classes} disableSlider>
-      <div className="sound__display">
-        <Icon />
-        <span className="sound__value">{volume}%</span>
-      </div>
+      <Icon />
       <div className="sound__slider-container">
         <input
           type="range"
@@ -110,6 +105,91 @@ export const Widget = () => {
           style={{ transform: `scaleX(${fillerWidth})` }}
         />
       </div>
+      <span className="sound__value">{volume}%</span>
     </DataWidget.Widget>
   );
 };
+
+export const styles = /* css */ `
+.sound {
+  background-color: var(--blue);
+  transform: translateZ(0);
+}
+
+.sound > svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-right: 0px;
+  fill: currentColor;
+}
+
+.sound__value {
+  margin-left: 4px;
+}
+
+.simple-bar--widgets-background-color-as-foreground .sound {
+  color: var(--blue);
+  background-color: transparent;
+}
+.sound__slider-container {
+  position: relative;
+  max-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0.7;
+  transition: max-width 320ms var(--transition-easing), padding 320ms var(--transition-easing),
+    opacity 320ms var(--transition-easing);
+}
+.sound:hover .sound__slider-container,
+.sound--dragging .sound__slider-container {
+  max-width: 100px;
+  padding: 0 2px;
+}
+.sound__slider-container:hover {
+  opacity: 1;
+}
+.sound__slider {
+  width: 100px;
+  height: 2px;
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--background);
+  outline: none;
+  -webkit-appearance: none;
+}
+.simple-bar--widgets-background-color-as-foreground .sound__slider {
+  background-color: var(--foreground);
+}
+.sound__slider::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
+  background-color: var(--foreground);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: width 160ms var(--transition-easing), height 160ms var(--transition-easing)
+}
+.simple-bar--widgets-background-color-as-foreground .sound__slider::-webkit-slider-thumb {
+  background-color: var(--blue);
+}
+.sound__slider::-webkit-slider-thumb:hover {
+  width: 10px;
+  height: 10px;
+}
+.sound__slider-filler {
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 4px;
+  width: calc(100% - 8px);
+  height: 2px;
+  background-color: var(--foreground);
+  transform-origin: left;
+}
+.simple-bar--widgets-background-color-as-foreground .sound__slider-filler {
+  background-color: var(--blue);
+}
+`;

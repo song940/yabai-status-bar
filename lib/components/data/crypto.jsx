@@ -3,8 +3,8 @@ import * as Uebersicht from "uebersicht";
 import * as Settings from "../../settings";
 import * as Icons from "../icons.jsx";
 import * as Utils from "../../utils";
-import * as DataWidget from "./data-widget.jsx";
-import * as DataWidgetLoader from "./data-widget-loader.jsx";
+import * as DataWidget from "../../widget.jsx";
+import * as DataWidgetLoader from "../../widget-loader.jsx";
 
 export { cryptoStyles as styles } from "../../styles/components/data/crypto";
 

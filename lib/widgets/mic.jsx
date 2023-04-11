@@ -1,6 +1,6 @@
 import * as Uebersicht from "uebersicht";
-import * as DataWidget from "../components/data/data-widget.jsx";
-import * as DataWidgetLoader from "../components/data/data-widget-loader.jsx";
+import * as DataWidget from "../widget.jsx";
+import * as DataWidgetLoader from "../widget-loader.jsx";
 import * as Icons from "../components/icons.jsx";
 import * as Settings from "../settings.js";
 import * as Utils from "../utils.js";

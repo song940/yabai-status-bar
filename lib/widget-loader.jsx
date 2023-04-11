@@ -1,4 +1,6 @@
-export const dataWidgetLoaderStyles = /* css */ `
+import * as Utils from "./utils";
+
+export const styles = /* css */ `
 .data-widget-loader {
   animation: data-widget-loader-appearance 320ms var(--transition-easing);
 }
@@ -29,3 +31,17 @@ export const dataWidgetLoaderStyles = /* css */ `
   }
 }
 `;
+
+export const Widget = ({ width = 14, height = 14, className, style }) => {
+  const classes = Utils.classnames("data-widget-loader data-widget", {
+    [className]: className,
+  });
+  return (
+    <div className={classes} style={style}>
+      <div
+        className="data-widget-loader__inner"
+        style={{ width, height, flex: `0 0 ${width || height}px` }}
+      />
+    </div>
+  );
+};

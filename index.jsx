@@ -5,13 +5,15 @@ import * as Process from "./lib/components/spaces/process.jsx";
 import * as Variables from "./lib/styles/core/variables";
 import * as Base from "./lib/styles/core/base";
 import * as Zoom from "./lib/components/data/zoom.jsx";
-import * as Time from "./lib/components/data/time.jsx";
-import * as DateDisplay from "./lib/components/data/date-display.jsx";
 import * as Weather from "./lib/components/data/weather.jsx";
-import * as Battery from "./lib/components/data/battery.jsx";
+
+import * as Time from "./lib/widgets/time.jsx";
 import * as Mic from "./lib/widgets/mic.jsx";
 import * as Wifi from "./lib/widgets/wifi.jsx";
 import * as Sound from "./lib/widgets/sound.jsx";
+import * as Battery from "./lib/widgets/battery.jsx";
+import * as Calendar from "./lib/widgets/calendar.jsx";
+
 import * as Keyboard from "./lib/components/data/keyboard.jsx";
 import * as Spotify from "./lib/components/data/spotify.jsx";
 import * as Crypto from "./lib/components/data/crypto.jsx";
@@ -19,11 +21,10 @@ import * as Stock from "./lib/components/data/stock.jsx";
 import * as Music from "./lib/components/data/music.jsx";
 import * as Mpd from "./lib/components/data/mpd.jsx";
 import * as BrowserTrack from "./lib/components/data/browser-track.jsx";
-import * as ViscosityVPN from "./lib/components/data/viscosity-vpn.jsx";
 import * as Dnd from "./lib/components/data/dnd.jsx";
 import * as Specter from "./lib/components/data/specter.jsx";
-import * as DataWidgetLoader from "./lib/components/data/data-widget-loader.jsx";
-import * as DataWidget from "./lib/components/data/data-widget.jsx";
+import * as WidgetLoader from "./lib/widget-loader.jsx";
+import * as Widget from "./lib/widget.jsx";
 import * as Utils from "./lib/utils";
 import * as Settings from "./lib/settings";
 
@@ -42,8 +43,8 @@ Utils.injectStyles("simple-bar-index-styles", [
   Process.styles,
   Settings.styles,
   settings.customStyles.styles,
-  DataWidget.styles,
-  DateDisplay.styles,
+  Widget.styles,
+  Calendar.styles,
   Zoom.styles,
   Time.styles,
   Weather.styles,
@@ -51,7 +52,6 @@ Utils.injectStyles("simple-bar-index-styles", [
   Stock.styles,
   Battery.styles,
   Wifi.styles,
-  ViscosityVPN.styles,
   Keyboard.styles,
   Mic.styles,
   Sound.styles,
@@ -61,7 +61,7 @@ Utils.injectStyles("simple-bar-index-styles", [
   BrowserTrack.styles,
   Dnd.styles,
   Specter.styles,
-  DataWidgetLoader.styles,
+  WidgetLoader.styles,
 ]);
 
 const render = ({ output, error }) => {
@@ -133,9 +133,8 @@ const render = ({ output, error }) => {
         <Sound.Widget />
         <Wifi.Widget />
         <Keyboard.Widget />
-        <DateDisplay.Widget />
+        <Calendar.Widget />
         <BrowserTrack.Widget />
-        <ViscosityVPN.Widget />
         <Time.Widget />
         <Dnd.Widget />
       </div>

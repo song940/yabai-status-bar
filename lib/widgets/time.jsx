@@ -1,12 +1,12 @@
 import * as Uebersicht from "uebersicht";
-import * as DataWidget from "./data-widget.jsx";
-import * as DataWidgetLoader from "./data-widget-loader.jsx";
-import * as Icons from "../icons.jsx";
-import useWidgetRefresh from "../../hooks/use-widget-refresh";
-import * as Utils from "../../utils";
-import * as Settings from "../../settings";
+import * as DataWidget from "../widget.jsx";
+import * as DataWidgetLoader from "../widget-loader.jsx";
+import * as Icons from "../components/icons.jsx";
+import useWidgetRefresh from "../hooks/use-widget-refresh.js";
+import * as Utils from "../utils.js";
+import * as Settings from "../settings.js";
 
-export { timeStyles as styles } from "../../styles/components/data/time";
+export { timeStyles as styles } from "../styles/components/data/time.js";
 
 const settings = Settings.get();
 const { widgets, timeWidgetOptions } = settings;

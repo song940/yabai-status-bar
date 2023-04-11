@@ -1,12 +1,20 @@
 import * as Uebersicht from "uebersicht";
-import * as DataWidget from "./data-widget.jsx";
-import * as DataWidgetLoader from "./data-widget-loader.jsx";
-import * as Icons from "../icons.jsx";
-import * as Utils from "../../utils";
-import * as Settings from "../../settings";
-import useWidgetRefresh from "../../hooks/use-widget-refresh";
+import * as DataWidget from "../widget.jsx";
+import * as DataWidgetLoader from "../widget-loader.jsx";
+import * as Icons from "../components/icons.jsx";
+import * as Utils from "../utils.js";
+import * as Settings from "../settings.js";
+import useWidgetRefresh from "../hooks/use-widget-refresh.js";
 
-export { dateStyles as styles } from "../../styles/components/data/date-display";
+export const styles = /* css */ `
+.date-display {
+  background-color: var(--cyan);
+}
+.simple-bar--widgets-background-color-as-foreground .date-display {
+  color: var(--cyan);
+  background-color: transparent;
+}
+`;
 
 const settings = Settings.get();
 const { widgets, dateWidgetOptions } = settings;
@@ -65,3 +73,5 @@ export const Widget = () => {
     </DataWidget.Widget>
   );
 };
+
+
